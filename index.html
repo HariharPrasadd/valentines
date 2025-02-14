@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Prisha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #FFCBD4;
+            color: #E54B65;
+            overflow-x: hidden;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 3rem 1rem;
+        }
+
+        .title {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .gallery {
+    column-count: 4; /* Adjust number of columns for larger screens */
+    column-gap: 15px;
+    width: 100%;
+}
+
+.gallery-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    .gallery {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        column-count: 1;
+    }
+}
+
+/* Style for the first gallery */
+.first-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.first-gallery .gallery-item {
+    width: 200px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    border-radius: 50%; /* Makes images circular */
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent shrinking */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.first-gallery .gallery-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.first-gallery .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fills the circle */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .first-gallery {
+        gap: 10px;
+    }
+
+    .first-gallery .gallery-item {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+        .heart-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            width: 40px;
+            height: 40px;
+            background-repeat: no-repeat;
+            transform-origin: center;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .love-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .love-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            background: #E54B65;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .concentric-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid rgba(229, 75, 101, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                width: 250px;
+                height: 250px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 400px;
+                height: 400px;
+                opacity: 0;
+            }
+        }
+
+        .small-text {
+            color: white;
+            font-size: 1rem;
+            max-width: 600px;
+            text-align: center;
+            margin-top: 2rem;
+            line-height: 1.6;
+            background: rgba(229, 75, 101, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .circle-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .split-content {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+
+        .split-text {
+            font-size: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .time-counter {
+            font-size: 1.5rem;
+            max-width: 800px;
+            text-align: center;
+            margin: 2rem 0;
+            animation: fadeIn 2s;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .background-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(229, 75, 101, 0.1);
+        }
+
+        .cloud {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            z-index: 0;
+            animation: float 10s infinite alternate;
+        }
+
+        .cloud:before, .cloud:after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+
+        .cloud:before {
+            width: 50px;
+            height: 50px;
+            top: -20px;
+            left: 10px;
+        }
+
+        .cloud:after {
+            width: 30px;
+            height: 30px;
+            top: -10px;
+            right: 15px;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0) translateX(0); }
+            to { transform: translateY(-20px) translateX(20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 1: Header and Gallery -->
+    <section class="section">
+        <div class="heart-bg" id="heartBg1"></div>
+        <h1 class="title">Happy Valentine's Day, <br>Prisha my love !!!</h1>
+        <div class="first-gallery">
+            <div class="gallery-item"><img src="img/img10.jpeg" alt="Image 1"></div>
+            <div class="gallery-item"><img src="img/img29.jpeg" alt="Image 2"></div>
+            <div class="gallery-item"><img src="img/img13.jpeg" alt="Image 3"></div>
+            <div class="gallery-item"><img src="img/img39.jpeg" alt="Image 4"></div>
+            <div class="gallery-item"><img src="img/img33.jpeg" alt="Image 5"></div>
+        </div>
+    </section>
+
+    <!-- Section 2: Love Visualization -->
+    <section class="section">
+        <div class="heart-bg" id="heartBg2"></div>
+        <div class="love-container">
+            <div class="love-heart">
+                <span>I Love You!</span>
+            </div>
+            <div class="concentric-heart" style="animation-delay: 0s;"></div>
+            <div class="concentric-heart" style="animation-delay: 0.5s;"></div>
+            <div class="concentric-heart" style="animation-delay: 1s;"></div>
+        </div>
+        <p class="small-text">Really, I don't know what I'd do without you. I love you to the moon and back.</p>
+    </section>
+
+    <!-- Section 3: And hey... -->
+    <section class="section">
+        <div class="heart-bg" id="heartBg3"></div>
+        <div class="background-circles" id="backgroundCircles1"></div>
+        <h2 class="title">And hey...</h2>
+        <div class="gallery-item" style="width: 300px; height: 300px;">
+            <img src="img/hey.jpeg" alt="Placeholder">
+        </div>
+    </section>
+
+    <!-- Section 4: Time counter -->
+    <section class="section">
+        <div class="heart-bg" id="heartBg4"></div>
+        <div class="cloud" style="top: 20%; left: 10%;"></div>
+        <div class="cloud" style="top: 60%; right: 15%;"></div>
+        <div class="time-counter" id="loveCounter">
+            I've loved you for 1 year, 4 months, 15 days, 14 hours, 35 minutes and <span id="seconds">0</span> seconds now...
+        </div>
+        <div class="gallery-item" style="width: 300px; height: 300px;">
+            <img src="img/img12.jpeg" alt="Placeholder">
+        </div>
+    </section>
+
+    <!-- Section 5: Ring and forever -->
+    <section class="section">
+        <div class="heart-bg" id="heartBg5"></div>
+        <div class="split-content">
+            <div class="split-text">And I will</div>
+            <div class="circle-image">
+                <img src="img/img33.jpeg" alt="Placeholder">
+            </div>
+            <div class="split-text">love you forevermore.</div>
+        </div>
+    </section>
+
+    <!-- Section 6: Gallery with heading -->
+    <section class="section">
+        <div class="heart-bg" id="heartBg6"></div>
+        <h2 class="subtitle">I can't wait to get cuter (and more jacked) with you baby !!!</h2>
+        <div class="gallery" id="randomGallery"></div>
+    </section>
+
+     <!-- Section 7: Watermark -->
+     <section class="section">
+        <div class="heart-bg" id="heartBg5"></div>
+        <div>- made with love, by hari.</div> <br>
+        <dive>(the luckiest hubby in the world)</div>
+    </section>
+
+    <script>
+        // Create hearts for background
+        function createHearts() {
+            const heartBgElements = document.querySelectorAll('.heart-bg');
+            
+            heartBgElements.forEach(bgElement => {
+                for (let i = 0; i < 15; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                    heart.style.animationDelay = `${Math.random() * 5}s`;
+                    heart.style.opacity = `${Math.random() * 0.5 + 0.1}`;
+                    heart.style.filter = `hue-rotate(${Math.random() * 60}deg)`;
+                    bgElement.appendChild(heart);
+                }
+            });
+        }
+
+        // Create background circles
+        function createBackgroundCircles() {
+            const bgCircles = document.getElementById('backgroundCircles1');
+            
+            for (let i = 0; i < 10; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                
+                const size = Math.random() * 200 + 50;
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${Math.random() * 100}%`;
+                circle.style.top = `${Math.random() * 100}%`;
+                circle.style.opacity = `${Math.random() * 0.3 + 0.1}`;
+                
+                bgCircles.appendChild(circle);
+            }
+        }
+
+        // Update love counter
+        function updateLoveCounter() {
+            // Set start date (adjust as needed)
+            const startDate = new Date(2023, 8, 29, 7, 32); // October 1, 2022, 10:25 AM
+            const now = new Date();
+            
+            const diffMs = now - startDate;
+            const diffSec = Math.floor(diffMs / 1000);
+            const diffMin = Math.floor(diffSec / 60);
+            const diffHour = Math.floor(diffMin / 60);
+            const diffDay = Math.floor(diffHour / 24);
+            
+            const years = Math.floor(diffDay / 365);
+            const months = Math.floor((diffDay % 365) / 30);
+            const days = Math.floor(diffDay % 30);
+            const hours = Math.floor(diffHour % 24);
+            const minutes = Math.floor(diffMin % 60);
+            const seconds = Math.floor(diffSec % 60);
+            
+            const counterElement = document.getElementById('loveCounter');
+            const secondsElement = document.getElementById('seconds');
+            
+            if (counterElement && secondsElement) {
+                counterElement.innerHTML = `I've loved you for ${years} year, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes and <span id="seconds">${seconds}</span> seconds now...`;
+                
+                // Animate changes
+                secondsElement.style.animation = 'none';
+                secondsElement.offsetHeight; // Trigger reflow
+                secondsElement.style.animation = 'fadeIn 0.5s';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            createHearts();
+            createBackgroundCircles();
+            updateLoveCounter();
+            
+            // Update counter every second
+            setInterval(updateLoveCounter, 1000);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create an array of all image names (1 through 47)
+            const imageCount = 45;
+            let imageArray = [];
+            for (let i = 1; i <= imageCount; i++) {
+                imageArray.push(`img${i}`);
+            }
+            
+            // Shuffle the array using Fisher-Yates (Knuth) shuffle algorithm
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                }
+                return array;
+            }
+            
+            // Shuffle the image array
+            const shuffledImages = shuffleArray(imageArray);
+            
+            // Take the first 6 images for our gallery
+            const selectedImages = shuffledImages.slice(0, 45);
+           
+            // Get reference to the gallery container
+            const gallery = document.getElementById('randomGallery');
+            
+            // Create and append gallery items with the selected images
+            selectedImages.forEach(imgName => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                
+                const img = document.createElement('img');
+                img.src = `img/${imgName}.jpeg`; // Assuming JPG format
+                img.alt = `Cute couple photo ${imgName}`;
+                
+                galleryItem.appendChild(img);
+                gallery.appendChild(galleryItem);
+            });
+        });
+    </script>
+</body>
+</html>
